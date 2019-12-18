@@ -36,6 +36,7 @@ name: demo
 version: 1
 url: 'https://suumo.jp/chintai/bc_100168625925/'
 iteration: 1
+userAgent: 'bot'
 
 steps:
   - action:
