@@ -129,7 +129,10 @@ export async function run({
   const browser = await getBrowser(launchOption);
 
   const page = await getPage(browser);
-
+  if (scenario.userAgent) {
+    await page.setUserAgent(scenario.userAgent);
+  }
+  
   let context: Context = {
     info: {
       options: { browserType, scenario, imageDir, cssDir, launchOption, handlers, },
