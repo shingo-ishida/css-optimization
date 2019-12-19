@@ -223,3 +223,12 @@ export const focusHandler: ActionHandler<"hover", "chrome"> = async (
 
   return { meta: action.meta };
 };
+
+export const scrollHandler: ActionHandler<"scroll", "chrome"> = async (
+  page: Page,
+  { action }
+) => {
+  await page.$eval(action.selector, (el) => el.scrollIntoView())
+
+  return { meta: action.meta };
+};
