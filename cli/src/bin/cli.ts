@@ -228,7 +228,8 @@ function getHandlers(browser: BrowserType) {
     wait: handlers.waitHandler,
     dump: handlers.dumpHandler,
     hover: handlers.hoverHandler,
-    focus: handlers.focusHandler
+    focus: handlers.focusHandler,
+    scroll: handlers.scrollHandler
   };
 }
 

@@ -2,7 +2,7 @@
 
 import { PathLike } from "fs";
 import { default as puppeteer } from "puppeteer";
-import { ActionName, ActionType, RunnerOptions } from "./main";
+import { RunnerOptions } from "./main";
 
 export type Context = {
   info: {
@@ -65,7 +65,8 @@ export type Action =
   | ScreenshotAction
   | GotoAction
   | ClearAction
-  | DumpAction;
+  | DumpAction
+  | ScrollAction;
 
 type Value =
   | string
@@ -87,7 +88,8 @@ export type ActionName =
   | "screenshot"
   | "goto"
   | "clear"
-  | "dump";
+  | "dump"
+  | "scroll";
   // | "coverage.stopCSSCoverage"
   // | "coverage.startCSSCoverage";
 
@@ -115,6 +117,8 @@ export type ActionType<T extends ActionName> = T extends "input"
   ? FocusAction
   : T extends "hover"
   ? HoverAction
+  : T extends "scroll"
+  ? ScrollAction
   : never;
 
 type Constrains = {
@@ -243,6 +247,14 @@ export type FocusAction = {
   action: {
     meta?: ActionMeta;
     type: "focus";
+    selector: string;
+  }
+}
+
+export type ScrollAction = {
+  action: {
+    meta?: ActionMeta;
+    type: "scroll";
     selector: string;
   }
 }
