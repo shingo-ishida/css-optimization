@@ -148,6 +148,8 @@ export async function run({
     if (!ctx.error) {
       return;
     }
+    console.log(ctx.error);
+
     const screenshotHandler = handlers.screenshot;
     await screenshotHandler(
       page,
